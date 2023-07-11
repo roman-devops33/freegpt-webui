@@ -38,5 +38,5 @@ jobs:
         file: Dockerfile
         platforms: linux/${{ matrix.arch }}
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/freegpt-webui:${{ matrix.arch }}-latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/freegpt-webui:latest
 
