@@ -37,5 +37,5 @@ jobs:
         context: .
         platforms: linux/${{ matrix.arch }}
         push: true
-        tags: gabbyfreez/freegpt-webui:${{ matrix.arch }}-latest
+        tags: ${{ secrets.DOCKER_USERNAME }}//freegpt-webui:${{ matrix.arch }}-latest
 
