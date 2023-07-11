@@ -42,7 +42,7 @@ jobs:
         context: .
         platforms: ${{ matrix.platform }}
         labels: ${{ steps.meta.outputs.labels }}
-        outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
+        outputs: type=image,name=${{ secrets.DOCKER_USERNAME }}/freegpt-webui:latest,push-by-digest=true,name-canonical=true,push=true
     -
       name: Export digest
       run: |
@@ -89,9 +89,9 @@ jobs:
       working-directory: /tmp/digests
       run: |
         docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-          $(printf '${{ env.REGISTRY_IMAGE }}@sha256:%s ' *)
+          $(printf '${{ secrets.DOCKERHUB_USERNAME }}/freegpt-webui@sha256:%s ' *)
     -
       name: Inspect image
       run: |
-        docker buildx imagetools inspect ${{ env.REGISTRY_IMAGE }}:${{ steps.meta.outputs.version }}
+        docker buildx imagetools inspect ${{ secrets.DOCKERHUB_USERNAME }}/freegpt-webui:${{ steps.meta.outputs.version }}
           
