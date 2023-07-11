@@ -42,7 +42,7 @@ jobs:
         context: .
         platforms: ${{ matrix.platform }}
         labels: ${{ steps.meta.outputs.labels }}
-        outputs: type=image,name=${{ secrets.DOCKER_USERNAME }}/freegpt-webui:latest,push-by-digest=true,name-canonical=true,push=true
+        outputs: type=image,name=${{ secrets.DOCKER_USERNAME }}/freegpt-webui,push-by-digest=true,name-canonical=true,push=true
     -
       name: Export digest
       run: |
